@@ -1,0 +1,605 @@
+/* 
+   Crop Choice Intelligence - Environmental Claymorphism Design System
+   Aesthetic: Soft 3D Pillow Clay Cards, Organic Earth Charcoal Background, 
+   Terracotta, Botanical Sage, Bio-Lush Emerald & Harvest Amber Palette.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    /* Environmental Organic Palette */
+    --bg-earth: #0e1612;
+    --bg-earth-gradient: radial-gradient(circle at 10% 10%, #15271d 0%, #0c140f 50%, #060a08 100%);
+
+    /* Clay Base Colors */
+    --clay-card-bg: #14211a;
+    --clay-card-secondary: #1a2a22;
+    --clay-card-terracotta: #2a1b14;
+
+    /* Clay 3D Shadows (Outer & Inset Highlights) */
+    --shadow-clay-card: 
+        12px 12px 24px #070b09, 
+        -10px -10px 24px #21352a,
+        inset 2px 2px 4px rgba(255, 255, 255, 0.08),
+        inset -3px -3px 6px rgba(0, 0, 0, 0.4);
+
+    --shadow-clay-card-hover: 
+        16px 16px 32px #050806, 
+        -12px -12px 32px #263e31,
+        inset 3px 3px 6px rgba(255, 255, 255, 0.12),
+        inset -4px -4px 8px rgba(0, 0, 0, 0.5);
+
+    --shadow-clay-btn: 
+        8px 8px 18px #080d0a, 
+        -6px -6px 18px #22372c,
+        inset 3px 3px 5px rgba(255, 255, 255, 0.25),
+        inset -3px -3px 5px rgba(0, 0, 0, 0.3);
+
+    --shadow-clay-btn-pressed: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.4),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.1);
+
+    --shadow-clay-chip: 
+        5px 5px 12px #090e0b, 
+        -4px -4px 12px #1f3227,
+        inset 2px 2px 3px rgba(255, 255, 255, 0.1);
+
+    /* Text Colors */
+    --text-primary: #f0fdf4;
+    --text-secondary: #a7f3d0;
+    --text-muted: #6ee7b7;
+    --text-dark: #052e16;
+
+    /* Environmental Accents */
+    --botanical-green: #22c55e;
+    --botanical-dark: #15803d;
+    --sage-accent: #84cc16;
+    --terracotta-accent: #f97316;
+    --harvest-amber: #f59e0b;
+    --bio-emerald: #10b981;
+    --clay-red: #ef4444;
+
+    --gradient-botanical: linear-gradient(135deg, #22c55e 0%, #10b981 50%, #84cc16 100%);
+    --gradient-terracotta: linear-gradient(135deg, #ea580c 0%, #d97706 100%);
+    --gradient-clay-hero: linear-gradient(145deg, #182c21 0%, #101c15 100%);
+
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-full: 9999px;
+
+    --transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-earth-gradient);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header & Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2.5rem;
+    background: rgba(14, 22, 18, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 2px solid rgba(34, 197, 94, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 900;
+}
+
+.brand-icon {
+    width: 46px;
+    height: 46px;
+    background: var(--gradient-botanical);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-clay-btn);
+}
+
+.brand-text {
+    background: var(--gradient-botanical);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+}
+
+.nav-item {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-full);
+    transition: var(--transition);
+    background: var(--clay-card-bg);
+    box-shadow: var(--shadow-clay-chip);
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--text-dark);
+    background: var(--botanical-green);
+    box-shadow: var(--shadow-clay-btn);
+    transform: translateY(-2px);
+}
+
+/* Main Container */
+.container {
+    max-width: 1350px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.3rem;
+    background: var(--clay-card-bg);
+    box-shadow: var(--shadow-clay-chip);
+    border-radius: var(--radius-full);
+    color: var(--sage-accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
+    background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.2rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Claymorphic Card */
+.glass-card {
+    background: var(--clay-card-bg);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-clay-card);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.glass-card:hover {
+    box-shadow: var(--shadow-clay-card-hover);
+    transform: translateY(-2px);
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-primary);
+}
+
+.card-title .icon {
+    margin-right: 0.5rem;
+}
+
+/* Presets Bar */
+.presets-section {
+    margin-bottom: 1.75rem;
+}
+
+.section-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--sage-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+}
+
+.presets-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.preset-chip {
+    background: var(--clay-card-secondary);
+    box-shadow: var(--shadow-clay-chip);
+    color: var(--text-secondary);
+    border: none;
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.preset-chip:hover {
+    background: var(--gradient-terracotta);
+    color: #ffffff;
+    box-shadow: var(--shadow-clay-btn);
+    transform: translateY(-3px) scale(1.03);
+}
+
+/* Form Controls & Range Sliders */
+.param-group {
+    margin-bottom: 1.35rem;
+}
+
+.param-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.param-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.param-badge {
+    background: var(--clay-card-secondary);
+    box-shadow: var(--shadow-clay-chip);
+    color: var(--harvest-amber);
+    padding: 0.2rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-family: monospace;
+    font-weight: 800;
+}
+
+.range-slider {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #09120c;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6), inset -1px -1px 3px rgba(255, 255, 255, 0.05);
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--gradient-botanical);
+    box-shadow: var(--shadow-clay-btn);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 1.1rem 1.8rem;
+    background: var(--gradient-botanical);
+    color: #042211;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-clay-btn);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 12px 12px 24px #050806, -10px -10px 24px #264232, inset 3px 3px 6px rgba(255, 255, 255, 0.4);
+}
+
+.btn-primary:active {
+    box-shadow: var(--shadow-clay-btn-pressed);
+    transform: translateY(1px);
+}
+
+/* Results Display */
+.recommendation-hero-box {
+    background: var(--gradient-clay-hero);
+    box-shadow: var(--shadow-clay-card);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1.75rem;
+    position: relative;
+    border: 2px solid rgba(34, 197, 94, 0.2);
+}
+
+.crop-badge-large {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: capitalize;
+    color: var(--botanical-green);
+    letter-spacing: -0.01em;
+    margin: 0.5rem 0;
+    text-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+}
+
+.confidence-pill {
+    display: inline-block;
+    padding: 0.35rem 1.1rem;
+    background: var(--clay-card-secondary);
+    box-shadow: var(--shadow-clay-chip);
+    color: var(--sage-accent);
+    border-radius: var(--radius-full);
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+
+.top-k-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.top-k-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--clay-card-secondary);
+    box-shadow: var(--shadow-clay-chip);
+    padding: 0.95rem 1.25rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.top-k-item:hover {
+    transform: translateX(4px);
+}
+
+.crop-name {
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 1.05rem;
+}
+
+.progress-bar-container {
+    flex-grow: 1;
+    margin: 0 1.2rem;
+    height: 10px;
+    background: #09120c;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--gradient-botanical);
+    border-radius: 5px;
+    transition: width 0.6s ease-out;
+}
+
+/* Soil Diagnosis Card */
+.soil-health-card {
+    background: var(--clay-card-bg);
+    box-shadow: var(--shadow-clay-card);
+    border-left: 6px solid var(--terracotta-accent);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.diagnosis-pill {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: var(--shadow-clay-chip);
+}
+
+.pill-good { background: #064e3b; color: #6ee7b7; }
+.pill-warn { background: #78350f; color: #fde68a; }
+.pill-bad  { background: #7f1d1d; color: #fca5a5; }
+
+.advice-list {
+    list-style-type: none;
+    margin-top: 0.85rem;
+}
+
+.advice-list li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.advice-list li::before {
+    content: "🌱";
+    position: absolute;
+    left: 0;
+    font-size: 0.85rem;
+}
+
+/* Tab Sections */
+.tabs-container {
+    margin-top: 3rem;
+}
+
+.tabs-header {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: var(--clay-card-bg);
+    box-shadow: var(--shadow-clay-chip);
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.85rem 1.6rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tab-btn:hover, .tab-btn.active {
+    color: var(--text-dark);
+    background: var(--gradient-botanical);
+    box-shadow: var(--shadow-clay-btn);
+    transform: translateY(-2px);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Charts Grid */
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+}
+
+@media (max-width: 768px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 320px;
+    width: 100%;
+}
+
+/* Crop Library Cards */
+.crop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.crop-card {
+    background: var(--clay-card-secondary);
+    box-shadow: var(--shadow-clay-card);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.crop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-clay-card-hover);
+}
+
+.crop-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-transform: capitalize;
+    color: var(--botanical-green);
+    margin-bottom: 0.6rem;
+}
+
+.crop-card-stat {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3.5rem 1rem;
+    color: var(--sage-accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-top: 2px solid rgba(34, 197, 94, 0.15);
+    margin-top: 4.5rem;
+}

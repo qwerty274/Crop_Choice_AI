@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Choice Intelligence | Machine Learning Recommendation System</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="AI-powered Crop Choice Intelligence platform utilizing Kaggle agronomic data, Scikit-Learn models, and soil nutrient health analytics to optimize crop selection.">
+    <meta name="keywords" content="crop recommendation, machine learning, agriculture AI, soil health, farming intelligence, crop selection">
+
+    <!-- CSS & Fonts -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="brand-icon">🌱</div>
+            <div class="brand-text">CropChoice AI</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#predictor" class="nav-item active">Predictor</a></li>
+            <li><a href="#analytics" class="nav-item">ML Benchmarks</a></li>
+            <li><a href="#simulator" class="nav-item">Climate Simulator</a></li>
+            <li><a href="#library" class="nav-item">Crop Library</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span>🤖 Powered by Machine Learning & Kaggle Data</span>
+            </div>
+            <h1 class="hero-title">Crop Choice Intelligence System</h1>
+            <p class="hero-subtitle">
+                Optimize crop yield and agricultural sustainability using precision soil chemical composition (N, P, K, pH) and micro-climate environmental modeling.
+            </p>
+        </section>
+
+        <!-- Tabbed Content Section -->
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="tab-predictor">🌾 Interactive Predictor</button>
+                <button class="tab-btn" data-tab="tab-analytics">📊 Model Analytics & Benchmarks</button>
+                <button class="tab-btn" data-tab="tab-simulator">🌦️ Climate Sensitivity Simulator</button>
+                <button class="tab-btn" data-tab="tab-library">📚 Crop Catalog Library</button>
+            </div>
+
+            <!-- TAB 1: INTERACTIVE PREDICTOR -->
+            <div id="tab-predictor" class="tab-content active">
+                <div class="dashboard-grid">
+                    
+                    <!-- Left: Form Controls -->
+                    <div class="glass-card">
+                        <div class="card-title">
+                            <span><span class="icon">🧪</span> Soil & Environmental Inputs</span>
+                        </div>
+
+                        <!-- Presets Bar -->
+                        <div class="presets-section">
+                            <div class="section-label">Quick Region / Soil Presets</div>
+                            <div class="presets-chips">
+                                <button class="preset-chip" data-preset="rice_belt">🌾 Alluvial Rice Belt</button>
+                                <button class="preset-chip" data-preset="arid_cotton">☁️ Semi-Arid Cotton</button>
+                                <button class="preset-chip" data-preset="coffee_highlands">☕ Coffee Highlands</button>
+                                <button class="preset-chip" data-preset="fruit_orchard">🍎 Fruit Orchard Loam</button>
+                                <button class="preset-chip" data-preset="acidic_tea_berries">🫐 Acidic Soil</button>
+                            </div>
+                        </div>
+
+                        <!-- Parameter Sliders -->
+                        <div class="param-group">
+                            <div class="param-header">
+                                <label class="param-label" for="n-slider">Nitrogen (N) Content</label>
+                                <span class="param-badge" id="n-val">90</span>
+                            </div>
+                            <input type="range" id="n-slider" class="range-slider" min="0" max="140" value="90">
+                        </div>
+
+                        <div class="param-group">
+                            <div class="param-header">
+                                <label class="param-label" for="p-slider">Phosphorus (P) Content</label>
+                                <span class="param-badge" id="p-val">48</span>
+                            </div>
+                            <input type="range" id="p-slider" class="range-slider" min="5" max="145" value="48">
+                        </div>
+
+                        <div class="param-group">
+                            <div class="param-header">
+                                <label class="param-label" for="k-slider">Potassium (K) Content</label>
+                                <span class="param-badge" id="k-val">40</span>
+                            </div>
+                            <input type="range" id="k-slider" class="range-slider" min="5" max="205" value="40">
+                        </div>
+
+                        <div class="param-group">
+                            <div class="param-header">
+                                <label class="param-label" for="temp-slider">Temperature (°C)</label>
+                                <span class="param-badge" id="temp-val">24</span>
+                            </div>
+                            <input type="range" id="temp-slider" class="range-slider" min="8" max="45" value="24" step="0.5">
+                        </div>
+
+                        <div class="param-group">
+                            <div class="param-header">
+                                <label class="param-label" for="humidity-slider">Relative Humidity (%)</label>
+                                <span class="param-badge" id="humidity-val">82</span>
+                            </div>
+                            <input type="range" id="humidity-slider" class="range-slider" min="14" max="100" value="82">
+                        </div>
+
+                        <div class="param-group">
+                            <div class="param-header">
+                                <label class="param-label" for="ph-slider">Soil pH Level</label>
+                                <span class="param-badge" id="ph-val">6.5</span>
+                            </div>
+                            <input type="range" id="ph-slider" class="range-slider" min="3.5" max="10.0" value="6.5" step="0.1">
+                        </div>
+
+                        <div class="param-group">
+                            <div class="param-header">
+                                <label class="param-label" for="rainfall-slider">Rainfall (mm)</label>
+                                <span class="param-badge" id="rainfall-val">240</span>
+                            </div>
+                            <input type="range" id="rainfall-slider" class="range-slider" min="20" max="300" value="240">
+                        </div>
+
+                        <button id="predict-btn" class="btn-primary">
+                            <span>✨ Generate Crop Recommendation</span>
+                        </button>
+                    </div>
+
+                    <!-- Right: Recommendation & Soil Diagnosis -->
+                    <div>
+                        <!-- Primary Crop Result Hero Card -->
+                        <div class="recommendation-hero-box">
+                            <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.05em;">
+                                Recommended Optimal Crop
+                            </div>
+                            <div id="primary-crop-name" class="crop-badge-large">Rice</div>
+                            <div>
+                                <span id="primary-confidence" class="confidence-pill">98.5% Match Confidence</span>
+                            </div>
+                        </div>
+
+                        <!-- Top 3 Probability Breakdown -->
+                        <div class="glass-card" style="margin-bottom: 1.5rem;">
+                            <div class="card-title">
+                                <span><span class="icon">🏆</span> Top Crop Recommendations</span>
+                            </div>
+                            <div id="top-k-container" class="top-k-list">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Soil Diagnosis & Fertilizer Advisory -->
+                        <div class="soil-health-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                                <h3 style="font-family: var(--font-heading); font-size:1.15rem; color: var(--cyan-primary);">
+                                    🩺 Soil Health & Nutrient Analysis
+                                </h3>
+                                <span id="soil-npk-summary" style="font-size:0.85rem; font-family:monospace; color:var(--text-secondary);">N:90 | P:48 | K:40</span>
+                            </div>
+                            
+                            <div style="margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                                Soil Reaction: <strong id="soil-ph-status" style="color: var(--text-primary);">Neutral</strong>
+                            </div>
+
+                            <div id="soil-diagnoses">
+                                <!-- Diagnostic badges -->
+                            </div>
+
+                            <div style="margin-top: 1rem;">
+                                <div style="font-size:0.85rem; font-weight:700; text-transform:uppercase; color:var(--text-muted);">
+                                    Agronomic Recommendations:
+                                </div>
+                                <ul id="fertilizer-list" class="advice-list">
+                                    <!-- Fertilizer action items -->
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: MODEL ANALYTICS -->
+            <div id="tab-analytics" class="tab-content">
+                <div class="glass-card" style="margin-bottom: 1.5rem;">
+                    <div class="card-title">
+                        <span><span class="icon">🧠</span> Machine Learning Performance Benchmarks</span>
+                        <span id="best-model-badge" class="confidence-pill">Random Forest</span>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                        Rigorous evaluation comparing 6 classification algorithms trained on 2,200 Kaggle data records using 5-fold cross-validation.
+                    </p>
+
+                    <div class="charts-grid">
+                        <div class="glass-card" style="background: rgba(15, 23, 42, 0.4);">
+                            <h4 style="font-family: var(--font-heading); margin-bottom: 1rem;">Algorithm Accuracy Comparison</h4>
+                            <div class="chart-wrapper">
+                                <canvas id="benchmarkChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="glass-card" style="background: rgba(15, 23, 42, 0.4);">
+                            <h4 style="font-family: var(--font-heading); margin-bottom: 1rem;">Feature Importance Breakdown</h4>
+                            <div class="chart-wrapper">
+                                <canvas id="importanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: CLIMATE SIMULATOR -->
+            <div id="tab-simulator" class="tab-content">
+                <div class="glass-card" style="text-align: center; padding: 4rem 2rem;">
+                    <div style="font-size: 3.5rem; margin-bottom: 1rem;">🔒</div>
+                    <div class="hero-badge" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: var(--amber-primary);">
+                        <span>⏳ Coming Soon — Scheduled for 2nd Evaluation Phase</span>
+                    </div>
+                    <h2 class="hero-title" style="font-size: 2rem; margin-top: 1rem;">Climate Sensitivity & Stress Simulator</h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem auto; font-size: 1.05rem;">
+                        This module is reserved for the <strong>2nd Evaluation Phase</strong>. It will feature real-time global warming scenario modeling (+1°C to +5°C temperature shifts and ±50% seasonal rainfall fluctuations).
+                    </p>
+                    <div style="display: inline-flex; gap: 1rem; justify-content: center;">
+                        <span class="preset-chip" style="cursor: default; opacity: 0.7;">🌡️ Temperature Delta Sensitivity</span>
+                        <span class="preset-chip" style="cursor: default; opacity: 0.7;">🌧️ Precipitation Shift Modeling</span>
+                        <span class="preset-chip" style="cursor: default; opacity: 0.7;">⚡ Crop Resilience Analytics</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: CROP LIBRARY -->
+            <div id="tab-library" class="tab-content">
+                <div class="glass-card">
+                    <div class="card-title">
+                        <span><span class="icon">📚</span> Supported Crops Library Catalog (22 Crops)</span>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="text" id="crop-search-input" placeholder="🔍 Search crop name (e.g. Rice, Cotton, Coffee, Apple)..." 
+                               style="width:100%; padding:0.8rem 1.2rem; background:var(--bg-glass-input); border:1px solid var(--border-glass); border-radius:var(--radius-md); color:var(--text-primary); outline:none; font-size:1rem;">
+                    </div>
+
+                    <div id="crop-catalog-grid" class="crop-grid">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            Crop Choice Intelligence Platform &copy; 2026 | Built with Python 3.13, Scikit-Learn & Flask | Kaggle Agronomic Dataset
+        </footer>
+
+    </div>
+
+    <!-- JS Application Script -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
