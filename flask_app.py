@@ -107,4 +107,4 @@ if __name__ == '__main__':
     print("\n========================================================")
     print("  Crop Choice Intelligence Web App Running on http://127.0.0.1:5000")
     print("========================================================\n")
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=False)
