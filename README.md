@@ -1,12 +1,12 @@
 # 🌱 Crop Choice AI — Precision Agronomic Intelligence Platform
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_App-Streamlit_Cloud-22c55e?style=for-the-badge&logo=streamlit)](https://cropchoiceai-inoor.streamlit.app/)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://crop-choice-9fs67sb7q-mks-projects-86157c50.vercel.app/#predictor)
 [![Python Version](https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![ML Engine](https://img.shields.io/badge/Scikit--Learn-1.9-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
-[![Framework](https://img.shields.io/badge/Streamlit-1.60-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Framework](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-> **🚀 Live Application URL:** [https://cropchoiceai-inoor.streamlit.app/](https://cropchoiceai-inoor.streamlit.app/)
+> **🚀 Live Application URL:** [https://crop-choice-9fs67sb7q-mks-projects-86157c50.vercel.app/#predictor](https://crop-choice-9fs67sb7q-mks-projects-86157c50.vercel.app/#predictor)
 
 ---
 
@@ -20,9 +20,9 @@ Built on the authentic **Kaggle Crop Recommendation Dataset** (2,200 observation
 
 ## 🌐 Live Web Application
 
-The platform is deployed and publicly accessible on Streamlit Cloud:
+The platform is deployed and publicly accessible on Vercel:
 
-👉 **[https://cropchoiceai-inoor.streamlit.app/](https://cropchoiceai-inoor.streamlit.app/)**
+👉 **[https://crop-choice-9fs67sb7q-mks-projects-86157c50.vercel.app/#predictor](https://crop-choice-9fs67sb7q-mks-projects-86157c50.vercel.app/#predictor)**
 
 ---
 
@@ -90,10 +90,11 @@ Trained and evaluated on **2,200 records** split 80/20 train-test with 5-fold cr
 
 ```
 Crop_Choice_AI/
-├── app.py                       # Main Streamlit Cloud entry point (native Streamlit app)
-├── streamlit_app.py             # Streamlit web application module
-├── flask_app.py                 # Flask REST API server for local/API integrations
-├── requirements.txt             # Python package dependencies for Streamlit Cloud
+├── app.py                       # Vercel WSGI entry point (exposes Flask app)
+├── flask_app.py                 # Main Flask Application server & REST API
+├── pyproject.toml               # PEP 621 metadata & Vercel builder entrypoint configuration
+├── vercel.json                  # Vercel serverless deployment & routing configuration
+├── requirements.txt             # Python package dependencies
 ├── README.md                    # Project documentation
 ├── data/
 │   └── Crop_recommendation.csv  # Kaggle agronomic dataset
@@ -131,13 +132,7 @@ pip install -r requirements.txt
 python src/train_model.py
 ```
 
-### 3. Option A: Run Streamlit Web Application (Recommended)
-```bash
-streamlit run app.py
-```
-*Navigates automatically to `http://localhost:8501`*
-
-### 4. Option B: Run Flask REST API & Web Dashboard
+### 3. Run Local Flask Web Application
 ```bash
 python flask_app.py
 ```
@@ -145,7 +140,7 @@ python flask_app.py
 
 ---
 
-## 🌐 REST API Endpoints (Flask Server)
+## 🌐 REST API Endpoints
 
 | Endpoint | Method | Description | Sample Output |
 | :--- | :---: | :--- | :--- |
